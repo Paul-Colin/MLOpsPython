@@ -4,7 +4,7 @@ import numpy as np
 from tensorflow.keras.preprocessing.image import load_img, img_to_array
 from keras.models import load_model
 from pathlib import Path
-
+from abc import ABC
 
 # load and prepare the image
 def load_image(filename: str|BytesIO):
@@ -22,6 +22,16 @@ def load_image(filename: str|BytesIO):
 
 BASE_PATH = Path(__file__).resolve().parent
 
+class IModel(ABC):
+    def predict(self, img: np.ndarray) -> np.ndarray:
+        pass
+
+class Model(IModel):
+    def __init__(self, model_path: str):
+        self.model = load_model(model_path)
+
+    def predict(self, img: np.ndarray) -> np.ndarray:
+        return self.model.predict(img)
 
 class Inference:
     def __init__(self, logging, model_path: str):
