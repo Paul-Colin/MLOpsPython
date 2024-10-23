@@ -20,6 +20,12 @@ env:
   DOCKER_WEBAPP_IMAGE_NAME: "mlopspython-webapp"
   DOCKER_REGISTRY: "ghcr.io"
 
+  AZURE_RESOURCE_GROUP_NAME: "azure-ml-paul-colin"
+  AZURE_ML_WORKSPACE_NAME: "cats-dogs-paul-colin"
+  AZURE_WEBAPP_NAME: "cats-dogs-paul-colin"
+
+  
+
 permissions:
   id-token: write
   contents: write
